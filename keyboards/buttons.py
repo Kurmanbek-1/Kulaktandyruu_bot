@@ -8,8 +8,14 @@ cancel_markup = ReplyKeyboardMarkup(resize_keyboard=True,
 
 submit_markup = ReplyKeyboardMarkup(resize_keyboard=True,
                                     one_time_keyboard=True
-                                    ).add(KeyboardButton('да'),
-                                          KeyboardButton('нет'))
+                                    ).add(KeyboardButton('Да'),
+                                          KeyboardButton('Нет'))
+
+fileorphoto = ReplyKeyboardMarkup(resize_keyboard=True,
+                                    one_time_keyboard=True
+                                    ).add(KeyboardButton('Хочу отправить файл!'),
+                                          KeyboardButton('Хочу отправить фотку!'),
+                                          KeyboardButton('Нет, не хочу!'))
 # ======================================================================================================================
 back = KeyboardButton('/<назад')
 # ======================================================================================================================

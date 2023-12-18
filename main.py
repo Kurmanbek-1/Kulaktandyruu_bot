@@ -3,15 +3,16 @@ import logging
 
 # ===========================================================================
 from config import dp, bot, Admins
-from handlers.commands import register_commands
+from handlers import commands, fsm_advertising
 
 
 # ==================================================================================================================
 async def on_startup(_):
     for Admin in Admins:
-        await bot.send_message(chat_id=Admin, text="Бот запущен!")
+        await bot.send_message(chat_id=Admin, text="Бот запущен!", reply_markup=None)
 
-register_commands(dp)
+commands.register_commands(dp)
+fsm_advertising.register_advertising(dp)
 
 # ===========================================================================
 if __name__ == "__main__":
