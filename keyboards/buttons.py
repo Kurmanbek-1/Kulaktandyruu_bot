@@ -1,6 +1,15 @@
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
 
 # ======================================================================================================================
+StartForAdmin = ReplyKeyboardMarkup(resize_keyboard=True,
+                                    one_time_keyboard=True
+                                    ).add(KeyboardButton('/all_advertising'))
+
+Social_Network = ReplyKeyboardMarkup(resize_keyboard=True,
+                                    one_time_keyboard=True
+                                    ).add(KeyboardButton('TikTok'),
+                                          KeyboardButton('Instagram'))
+
 cancel_button = KeyboardButton('Отмена')
 cancel_markup = ReplyKeyboardMarkup(resize_keyboard=True,
                                     one_time_keyboard=True,
@@ -13,8 +22,7 @@ submit_markup = ReplyKeyboardMarkup(resize_keyboard=True,
 
 fileorphoto = ReplyKeyboardMarkup(resize_keyboard=True,
                                     one_time_keyboard=True
-                                    ).add(KeyboardButton('Хочу отправить файл!'),
-                                          KeyboardButton('Хочу отправить фотку!'),
+                                    ).add(KeyboardButton('Хочу отправить фотку!'),
                                           KeyboardButton('Нет, не хочу!'))
 # ======================================================================================================================
 back = KeyboardButton('/<назад')
