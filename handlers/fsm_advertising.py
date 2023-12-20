@@ -49,7 +49,7 @@ async def fileorphotoreklama(message: types.Message):
         photo_tariff = open('media/img.png', 'rb')
         await advertising.tariff.set()
         await message.answer_photo(photo=photo_tariff, caption="Какой тариф вы хотите выбрать? ⬇️",
-                                   reply_markup=buttons.cancel_markup)
+                                   reply_markup=buttons.ButtonForSocialNetwork)
 
     else:
         await message.answer('Выберите что вы хотите отправить через кнокпи ⬇️', reply_markup=buttons.fileorphoto)
@@ -61,7 +61,8 @@ async def info_photo_load(message: types.Message, state: FSMContext):
 
     photo_tariff = open('media/img.png', 'rb')
     await advertising.tariff.set()
-    await message.answer_photo(photo=photo_tariff, caption="Какой тариф вы хотите выбрать? ⬇️")
+    await message.answer_photo(photo=photo_tariff, caption="Какой тариф вы хотите выбрать? ⬇️",
+                               reply_markup=buttons.ButtonForSocialNetwork)
 
 
 async def tariff(message: types.Message, state: FSMContext):
@@ -80,7 +81,7 @@ async def social_network(message: types.Message, state: FSMContext):
     await message.answer_photo(photo=photo_requisites,
                                caption='Вот реквизиты на которые нужно перевести деньги для оплаты! 📨')
     await advertising.next()
-    await message.answer(f"Отправьте фотку/скриншот чека!")
+    await message.answer(f"Отправьте фотку/скриншот чека!", reply_markup=buttons.cancel_markup)
 
 
 async def process_receipt(message: types.Message, state: FSMContext):
@@ -99,8 +100,8 @@ async def process_receipt(message: types.Message, state: FSMContext):
 
     await sql_insert_advertising(state)
 
-    await message.answer("Отправлено на проверку администратору!  🙌🏼\n"
-                         "Это займет какое-то время, прошу подождать! ⏳")
+    await message.answer("Отправлено на проверку администратору!  🙂\n"
+                         "Это займет какое-то время, прошу подождать! ⏳", reply_markup=buttons.Start)
     await state.finish()
 
 
@@ -140,7 +141,9 @@ async def send_admin_data(data, state: FSMContext):
 
 async def answer_yes(message: types.Message, state: FSMContext):
     global user_id
-    await bot.send_message(user_id, text="Оплата прошла успешно! Спасибо за ваш заказ. ✅")
+    await bot.send_message(user_id, text="Оплата прошла успешно! ✅\n "
+                                         "Спасибо, что выбрали нас! Надеемся и дальше быть вам полезными! 🙂",
+                           reply_markup=buttons.Start)
 
     for Admin in Admins:
         await bot.send_message(chat_id=Admin, text='Подтверждено! ✅')
@@ -149,7 +152,9 @@ async def answer_yes(message: types.Message, state: FSMContext):
 async def answer_no(message: types.Message):
     global user_id
     await bot.send_message(user_id,
-                           text="Оплата не прошла. Пожалуйста, свяжитесь с поддержкой для дополнительной информации. ❌")
+                           text="Оплата не прошла. ❌ \n"
+                                "Пожалуйста, свяжитесь с поддержкой для дополнительной информации.\n"
+                                "@kulaktandyruu_Bishkek", reply_markup=buttons.Start)
     for Admin in Admins:
         await bot.send_message(chat_id=Admin, text='Отклонено! ❌')
 

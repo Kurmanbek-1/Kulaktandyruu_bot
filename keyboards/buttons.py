@@ -5,15 +5,38 @@ StartForAdmin = ReplyKeyboardMarkup(resize_keyboard=True,
                                     one_time_keyboard=True
                                     ).add(KeyboardButton('/all_advertising'))
 
-Social_Network = ReplyKeyboardMarkup(resize_keyboard=True,
+OrderForStart = ReplyKeyboardMarkup(resize_keyboard=True,
                                     one_time_keyboard=True
-                                    ).add(KeyboardButton('TikTok'),
-                                          KeyboardButton('Instagram'))
+                                    ).add(KeyboardButton('/Заказать'))
+
+
+
+
+Start = ReplyKeyboardMarkup(resize_keyboard=True,
+                                    one_time_keyboard=True
+                                    ).add(KeyboardButton('/start'))
+
+
 
 cancel_button = KeyboardButton('Отмена')
 cancel_markup = ReplyKeyboardMarkup(resize_keyboard=True,
                                     one_time_keyboard=True,
                                     ).add(cancel_button)
+
+Social_Network = ReplyKeyboardMarkup(resize_keyboard=True,
+                                    one_time_keyboard=True
+                                    ).add(KeyboardButton('Instagram'),
+                                          cancel_button)
+
+
+ButtonForSocialNetwork = ReplyKeyboardMarkup(resize_keyboard=True,
+                            one_time_keyboard=True,
+                            row_width=2).add(KeyboardButton('Premium'),
+                                             KeyboardButton('VIP'),
+                                             KeyboardButton('100сом!'),
+                                             KeyboardButton('150сом!'),
+                                             KeyboardButton('250сом!'),
+                                             cancel_button)
 
 submit_markup = ReplyKeyboardMarkup(resize_keyboard=True,
                                     one_time_keyboard=True
