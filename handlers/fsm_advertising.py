@@ -79,7 +79,7 @@ async def social_network(message: types.Message, state: FSMContext):
     photo_requisites = open('media/img_1.png', 'rb')
 
     await message.answer_photo(photo=photo_requisites,
-                               caption='Вот реквизиты на которые нужно перевести деньги для оплаты! 📨')
+                               caption='Вот реквизиты на которые нужно перевести деньги для оплаты! 📨\n +996507827937 \n\n("Возврат средств невозможен")')
     await advertising.next()
     await message.answer(f"Отправьте фотку/скриншот чека!", reply_markup=buttons.cancel_markup)
 
@@ -141,8 +141,8 @@ async def send_admin_data(data, state: FSMContext):
 
 async def answer_yes(message: types.Message, state: FSMContext):
     global user_id
-    await bot.send_message(user_id, text="Оплата прошла успешно! ✅\n "
-                                         "Спасибо, что выбрали нас! Надеемся и дальше быть вам полезными! 🙂",
+    await bot.send_message(user_id, text="Оплата прошла успешно! ✅\n Скоро ваша реклама будет опубликовано!\n"
+                                         "Спасибо что выбрали нас !🙂",
                            reply_markup=buttons.Start)
 
     for Admin in Admins:
@@ -169,7 +169,7 @@ async def cancel_reg(message: types.Message, state: FSMContext):
 # =======================================================================================================================
 def register_advertising(dp: Dispatcher):
     dp.register_message_handler(cancel_reg, Text(equals="Отмена", ignore_case=True), state="*")
-    dp.register_message_handler(fsm_start, commands=["Заказать!", "order"])
+    dp.register_message_handler(fsm_start, commands=["Заказать", "order"])
 
     dp.register_message_handler(info, state=advertising.info)
     dp.register_message_handler(fileorphotoreklama, state=advertising.submit)

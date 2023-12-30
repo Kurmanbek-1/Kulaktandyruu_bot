@@ -33,9 +33,9 @@ ButtonForSocialNetwork = ReplyKeyboardMarkup(resize_keyboard=True,
                             one_time_keyboard=True,
                             row_width=2).add(KeyboardButton('Premium'),
                                              KeyboardButton('VIP'),
-                                             KeyboardButton('100сом!'),
-                                             KeyboardButton('150сом!'),
-                                             KeyboardButton('250сом!'),
+                                             KeyboardButton('100сом'),
+                                             KeyboardButton('150сом'),
+                                             KeyboardButton('250сом'),
                                              cancel_button)
 
 submit_markup = ReplyKeyboardMarkup(resize_keyboard=True,
