@@ -29,14 +29,23 @@ class advertising(StatesGroup):
 
 async def fsm_start(message: types.Message):
     await advertising.info.set()
-    await message.answer("Раскажите о вашей рекламе!")
+    await message.answer("Раскажите о вашей рекламе!\n\n"
+                         "Образец: \n"
+                         "1.Кого вы ищете?\n"
+                         "2.На какую должность?\n"
+                         "3.Возраст\n"
+                         "4.График работы\n"
+                         "5.Зарплата\n"
+                         "6.Опыт работы\n"
+                         "7.Ваш адрес\n"
+                         "8.Номер телефона\n")
 
 
 async def info(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['info'] = message.text
     await advertising.next()
-    await message.answer('Хотите отправить фотку, того что вы хотите чтоб мы прорекламировали?',
+    await message.answer('Хотите отправить фотку вашей рекламы?',
                          reply_markup=buttons.fileorphoto)
 
 
@@ -79,7 +88,8 @@ async def social_network(message: types.Message, state: FSMContext):
     photo_requisites = open('media/img_1.png', 'rb')
 
     await message.answer_photo(photo=photo_requisites,
-                               caption='Вот реквизиты на которые нужно перевести деньги для оплаты! 📨\n +996507827937 \n\n("Возврат средств невозможен")')
+                               caption='Вот реквизиты на которые нужно перевести деньги для оплаты! 📨'
+                                       '\n 507 827 937 \n\n("Возврат средств невозможен")')
     await advertising.next()
     await message.answer(f"Отправьте фотку/скриншот чека!", reply_markup=buttons.cancel_markup)
 

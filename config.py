@@ -7,7 +7,8 @@ storage = MemoryStorage()
 
 TOKEN = config('TOKEN')
 
-Admins = [6424789388, 995712956, ]
+# Admins = [6424789388, 995712956, ]
+Admins = [995712956, ]
 
 bot = Bot(TOKEN)
 
