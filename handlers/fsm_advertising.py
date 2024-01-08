@@ -89,7 +89,7 @@ async def social_network(message: types.Message, state: FSMContext):
 
     await message.answer_photo(photo=photo_requisites,
                                caption='Вот реквизиты на которые нужно перевести деньги для оплаты! 📨'
-                                       '\n 507 827 937 \n\n("Возврат средств невозможен")')
+                                       '\n +996505330220 \n\n("Возврат средств невозможен")')
     await advertising.next()
     await message.answer(f"Отправьте фотку/скриншот чека!", reply_markup=buttons.cancel_markup)
 
