@@ -2,8 +2,11 @@ from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
 
 # ======================================================================================================================
 StartForAdmin = ReplyKeyboardMarkup(resize_keyboard=True,
-                                    one_time_keyboard=True
-                                    ).add(KeyboardButton('/all_advertising'))
+                                    one_time_keyboard=True,
+                                    row_width=1
+                                    ).add(KeyboardButton('/Все_заказанные!'),
+                                          KeyboardButton('/Заблокированные!'),
+                                          KeyboardButton('/Инструкция!'))
 
 OrderForStart = ReplyKeyboardMarkup(resize_keyboard=True,
                                     one_time_keyboard=True

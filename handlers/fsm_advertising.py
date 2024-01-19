@@ -5,8 +5,10 @@ from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import os
 from config import bot, Admins
-from keyboards import buttons
+import buttons
 from db.ORM import sql_insert_advertising
+
+from handlers import commands
 
 # =======================================================================================================================
 
@@ -28,17 +30,23 @@ class advertising(StatesGroup):
 
 
 async def fsm_start(message: types.Message):
-    await advertising.info.set()
-    await message.answer("Раскажите о вашей рекламе!\n\n"
-                         "Образец: \n"
-                         "1.Кого вы ищете?\n"
-                         "2.На какую должность?\n"
-                         "3.Возраст\n"
-                         "4.График работы\n"
-                         "5.Зарплата\n"
-                         "6.Опыт работы\n"
-                         "7.Ваш адрес\n"
-                         "8.Номер телефона\n")
+    user_id = message.from_user.id
+
+    if user_id in commands.blocked_users:
+        await message.reply('Извините, вы заблокированы. 🚫', reply_markup=None)
+        return
+    else:
+        await advertising.info.set()
+        await message.answer("Раскажите о вашей рекламе!\n\n"
+                             "Образец: \n"
+                             "1.Кого вы ищете?\n"
+                             "2.На какую должность?\n"
+                             "3.Возраст\n"
+                             "4.График работы\n"
+                             "5.Зарплата\n"
+                             "6.Опыт работы\n"
+                             "7.Ваш адрес\n"
+                             "8.Номер телефона\n")
 
 
 async def info(message: types.Message, state: FSMContext):

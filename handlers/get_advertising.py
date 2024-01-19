@@ -28,4 +28,4 @@ async def get_advertising(message: types.Message):
 
 
 def sql_get(dp: Dispatcher):
-    dp.register_message_handler(get_advertising, commands=['all_advertising'])
+    dp.register_message_handler(get_advertising, commands=['all_advertising', "Все_заказанные!"])
